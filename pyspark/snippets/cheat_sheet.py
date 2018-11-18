@@ -27,3 +27,18 @@ https://stackoverflow.com/questions/40686934/how-to-use-or-condition-in-when-in-
                                             .when(col('agent_id').isin(agent_tablet),'Tablet/Web')
                                             .otherwise('unknown'))
 
+
+## read data
+
+def read_data(spark_context: SQLContext, configuration: CrunchConfiguration) -> f.DataFrame:
+    query = '''
+      SELECT
+        date AS ymd,
+        country AS locale,
+        price AS price
+      FROM
+        table
+      WHERE
+        date BETWEEN {start_date} AND {crunch_date}
+    '''.format(start_date=configuration.query_start_date, crunch_date=configuration.crunch_date)
+    return spark_context.sql(query)
