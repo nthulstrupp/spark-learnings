@@ -14,3 +14,6 @@ Very simple workflow file to be executed eg. via oozie
 
 #### Calculating confidence interval
 Code for calculating a confidence interval via sampling. This code was designed for a A/B test where variable was very volatile
+
+#### Date functions
+Sample code for date manipulation
